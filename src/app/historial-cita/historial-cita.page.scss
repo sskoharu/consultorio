@@ -1,0 +1,37 @@
+ion-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #1f1f1f;
+  color: white;
+}
+
+ion-card-title,
+ion-card-subtitle,
+p {
+  font-size: 15px;
+}
+
+ion-icon {
+  color: #66ccff;
+  margin-right: 4px;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-color-scheme: light) {
+  ion-card {
+    background-color: white;
+    color: black;
+  }
+
+  ion-icon {
+    color: #1976d2;
+  }
+}

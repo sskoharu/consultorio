@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Panel del Paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <!-- Botones principales -->
+  <ion-card class="ion-padding fade-in">
+    <ion-button expand="block" color="primary" class="fade-in" (click)="RegistrarCita()">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      Registrar Cita
+    </ion-button>
+
+    <ion-button expand="block" color="warning" class="fade-in" (click)="verHistorial()">
+      <ion-icon name="book-outline" slot="start"></ion-icon>
+      Ver Historial
+    </ion-button>
+
+    <ion-button expand="block" color="secondary" class="fade-in" (click)="actualizarPerfil()">
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      Editar Perfil
+    </ion-button>
+
+    <ion-button expand="block" color="danger" class="fade-in" (click)="CerrarSesion()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </ion-card>
+
+  <!-- Información de la cita -->
+  <ion-card *ngIf="citaPaciente" class="info-cita-card fade-in">
+    <ion-card-header>
+      <ion-card-title>Información de la Cita</ion-card-title>
+      <ion-card-subtitle>Motivo: {{ citaPaciente.Motivo }}</ion-card-subtitle>
+      <ion-card-subtitle>Estado: {{ citaPaciente.Estado }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Fecha:</strong> {{ citaPaciente.Fecha | date: 'short' }}</p>
+      <p><strong>Dentista:</strong> {{ odontologoDatos?.Nombre }} {{ odontologoDatos?.Apellido }}</p>
+      <p><strong>Especialidad:</strong> {{ odontologoDatos?.Especialidad }}</p>
+      <p><strong>Correo:</strong> {{ odontologoDatos?.Email }}</p>
+      <p><strong>Teléfono:</strong> {{ odontologoDatos?.Telefono }}</p>
+    </ion-card-content>
+
+    <!-- Botones de acción -->
+    <ion-grid>
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="auto">
+          <ion-button color="primary" fill="outline" (click)="modificarCita(citaPaciente)">
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            Modificar
+          </ion-button>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-button color="danger" fill="outline" (click)="cancelarCita(citaPaciente)">
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Cancelar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Si no hay cita -->
+  <ion-card *ngIf="!citaPaciente" class="ion-text-center fade-in">
+    <ion-card-content>
+      <ion-icon name="calendar-clear-outline" size="large" color="medium"></ion-icon>
+      <p>No tienes citas registradas.</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

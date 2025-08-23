@@ -1,0 +1,39 @@
+<ion-item class="input-item">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input type="text" placeholder="Motivo" [(ngModel)]="motivo"></ion-input>
+</ion-item>
+<ion-item class="input-item">
+  <ion-icon name="calendar-outline" slot="start"></ion-icon>
+  <ion-datetime
+  name="fechaHora"
+  presentation="date-time"
+  placeholder="Selecciona fecha y hora"
+  [min]="fechaMinima"
+  (ionChange)="validarFecha($event)"
+  hour-cycle="h23"
+  minuteValues="0" 
+  hourValues="10,11,12,13,14,15,16,17,18"
+><span slot="title">Seleccione un horario para su cita</span>
+<span slot="time-label">Hora</span></ion-datetime>
+</ion-item>
+<ion-item class="input-item">
+  <ion-input
+    type="text"
+    name="fechaHoraInput"
+    placeholder="Fecha seleccionada"
+    [value]="fechaHoraFormateada"
+    readonly
+  ></ion-input>
+</ion-item>
+<ion-label *ngIf="mensajeHorasDisponibles" class="ion-text-wrap ion-margin-bottom">
+  {{ mensajeHorasDisponibles }}
+</ion-label>
+<ion-button expand="block" color="primary" (click)="actualizarCita()" class="ion-margin-top">
+  Actualizar cita
+  
+</ion-button>
+<ion-button expand="block" color="primary" (click)="Cerrar()" class="ion-margin-top">
+  Cancelar
+  
+</ion-button>
+

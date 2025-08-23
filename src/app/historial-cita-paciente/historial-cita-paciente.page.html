@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Historial de Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="true" [fullscreen]="true" class="ion-padding">
+
+<ion-card *ngFor="let cita of citasPaciente" class="historial-card fade-in">
+    <ion-card-header>
+      <ion-card-title>Información de la cita</ion-card-title>
+      <ion-card-subtitle>Motivo: {{ cita.Motivo }}</ion-card-subtitle>
+      <ion-card-subtitle>Estado: {{ cita.Estado }}</ion-card-subtitle>
+      <ion-card-subtitle>Fecha: {{ cita.Fecha | date: 'short' }}</ion-card-subtitle>
+      <ion-card-subtitle>Calificación: {{ cita.Calificacion }} / 5 ⭐</ion-card-subtitle>
+      <ion-card-subtitle>Opinión: {{ cita.Opinion }}</ion-card-subtitle>
+      <ion-card-subtitle>Dentista: {{ odontologosDatosMap[cita.OdontologoId]?.Nombre }} {{ odontologosDatosMap[cita.OdontologoId]?.Apellido }}</ion-card-subtitle>
+      <ion-card-subtitle>Especialidad: {{ odontologosDatosMap[cita.OdontologoId]?.Especialidad }}</ion-card-subtitle>
+      <ion-card-subtitle>Correo: {{ odontologosDatosMap[cita.OdontologoId]?.Email }}</ion-card-subtitle>
+      <ion-card-subtitle>Teléfono: {{ odontologosDatosMap[cita.OdontologoId]?.Telefono }}</ion-card-subtitle>
+
+      <ion-button expand="block" color="primary" (click)="abrirCalificacion(cita.Id)" class="ion-margin-top">
+        <ion-icon name="star-outline" slot="start"></ion-icon>
+        Calificar
+      </ion-button>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-item *ngIf="citasPaciente.length === 0" class="fade-in ion-text-center">
+    <ion-label>No tiene citas atendidas.</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary" (click)="regresar()" class="ion-margin-top fade-in">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+
+</ion-content>

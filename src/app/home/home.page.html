@@ -1,20 +1,54 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Consultorio Odontológico</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="fullscreen-center">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-col size="12" size-md="8" size-lg="5">
+      <div class="login-wrapper">
+
+        <h2 class="titulo ion-text-center">Bienvenido</h2>
+        <p class="subtitulo ion-text-center">Inicia sesión para continuar</p>
+
+        <ion-card class="login-card">
+          <ion-card-content>
+
+            <ion-item lines="none">
+              <ion-icon name="person-outline" slot="start"></ion-icon>
+              <ion-input [(ngModel)]="txt_usu" placeholder="Usuario" clearInput></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-input [(ngModel)]="txt_cla" type="password" placeholder="Contraseña" clearInput></ion-input>
+            </ion-item>
+
+            <ion-button expand="block" color="primary" class="ion-margin-top" (click)="login()">
+              <ion-icon name="log-in-outline" slot="start"></ion-icon>
+              Iniciar Sesión
+            </ion-button>
+
+          </ion-card-content>
+        </ion-card>
+
+        <!-- BOTONES SECUNDARIOS -->
+        <div class="extra-buttons">
+          <ion-button expand="block" color="secondary" (click)="registro()">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
+            Registrarse
+          </ion-button>
+
+          <ion-button expand="block" fill="clear" color="light" (click)="recuperar()">
+            <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+            <span class="underline">Olvidé mi contraseña</span>
+          </ion-button>
+        </div>
+
+      </div>
+    </ion-col>
+
   </div>
 </ion-content>

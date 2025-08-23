@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro Paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-input placeholder="Cédula" [(ngModel)]="txt_cedula" name="cedula" ngDefaultControl></ion-input>
+<ion-input placeholder="Nombre" [(ngModel)]="txt_nombre" name="nombre" ngDefaultControl></ion-input>
+<ion-input placeholder="Apellido" [(ngModel)]="txt_apellido" name="apellido" ngDefaultControl></ion-input>
+<ion-input type="number" placeholder="Edad" [(ngModel)]="txt_edad" name="edad" ngDefaultControl></ion-input>
+<ion-input type="tel" placeholder="Teléfono" [(ngModel)]="txt_telefono" name="telefono" ngDefaultControl></ion-input>
+<ion-input type="email" placeholder="Correo" [(ngModel)]="txt_correo" name="correo" ngDefaultControl></ion-input>
+<ion-input type="password" name="contrasena" [(ngModel)]="txt_contrasena" ngDefaultControl></ion-input>
+  <div class="ion-margin-top">
+    <ion-button expand="block" (click)="registrarPaciente()">Registrar</ion-button>
+    <ion-button expand="block" color="medium" (click)="cerrarModal()">Cancelar</ion-button>
+  </div>
+
+</ion-content>

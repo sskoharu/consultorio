@@ -1,0 +1,104 @@
+ion-content {
+  --background: transparent;
+  background: url('/assets/fondo-cita.jpg') no-repeat center center / cover;
+  position: relative;
+  animation: zoomBackground 40s ease-in-out infinite alternate;
+}
+
+ion-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.65); // más oscuro
+  z-index: 0;
+}
+
+/* Contenedor del formulario */
+.form-card {
+  background-color: rgba(25, 25, 25, 0.95); // oscuro y opaco
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out;
+  color: white;
+}
+
+/* Campos */
+.input-item {
+  border-radius: 8px;
+  margin-bottom: 12px;
+  --background: rgba(50, 50, 50, 0.8); // gris oscuro
+  --color: #fff;
+}
+
+ion-input::part(native),
+ion-select::part(text),
+ion-datetime::part(native) {
+  color: #fff;
+}
+
+ion-label {
+  color: #ccc;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomBackground {
+  0% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 110%;
+  }
+}
+
+/* Botones con animación */
+ion-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+ion-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Modo claro */
+@media (prefers-color-scheme: light) {
+  ion-content::before {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000;
+  }
+
+  .input-item {
+    --background: #f2f2f2;
+    --color: #000;
+  }
+
+  ion-label {
+    color: #333;
+  }
+}

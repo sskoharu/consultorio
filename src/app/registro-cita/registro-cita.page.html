@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Registrar Cita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <ion-card class="form-card fade-in">
+    <ion-card-content>
+
+      <ion-item class="input-item">
+        <ion-icon name="chatbox-ellipses-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Motivo" [(ngModel)]="motivo"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-select [(ngModel)]="odontologo" placeholder="Seleccione odontólogo">
+          <ion-select-option value="1">Odontólogo Sebastián, Dentista</ion-select-option>
+          <ion-select-option value="2">Odontólogo 2</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-datetime name="fechaHora" presentation="date-time" placeholder="Selecciona fecha y hora"
+          [min]="fechaMinima" (ionChange)="validarFecha($event)" hour-cycle="h23" minuteValues="0"
+          hourValues="10,11,12,13,14,15,16,17,18">
+          <span slot="title">Seleccione un horario para su cita</span>
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-icon name="time-outline" slot="start"></ion-icon>
+        <ion-input type="text" name="fechaHoraInput" placeholder="Fecha seleccionada" [value]="fechaHoraFormateada"
+          readonly></ion-input>
+      </ion-item>
+
+      <ion-label *ngIf="mensajeHorasDisponibles" class="ion-text-wrap ion-margin-bottom">
+        {{ mensajeHorasDisponibles }}
+      </ion-label>
+
+      <ion-button expand="block" color="primary" class="ion-margin-top" (click)="guardarCita()">
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Guardar cita
+      </ion-button>
+
+
+      <ion-button expand="block" color="secondary" class="ion-margin-top" (click)="regresar()">
+        <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+        Regresar
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

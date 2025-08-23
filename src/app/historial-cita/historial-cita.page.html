@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Historial de Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="true" class="ion-padding">
+
+  <ion-card *ngFor="let cita of citas" class="ion-margin-bottom fade-in">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        Cita #{{ cita.Id }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        <ion-icon name="time-outline" slot="start"></ion-icon>
+        {{ cita.Fecha | date: 'short' }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Motivo:</strong> {{ cita.Motivo }}</p>
+      <p><strong>Estado:</strong> {{ cita.Estado }}</p>
+      <p><strong>Paciente:</strong> {{ cita.PacienteNombre }} {{ cita.PacienteApellido }}</p>
+      <p><strong>Cédula:</strong> {{ cita.PacienteCedula }}</p>
+      <p><strong>Correo:</strong> {{ cita.PacienteEmail }}</p>
+      <p><strong>Teléfono:</strong> {{ cita.PacienteTelefono }}</p>
+      <p><strong>Edad:</strong> {{ cita.PacienteEdad }}</p>
+      <p><strong>Calificación:</strong> {{ cita.Calificacion }} / 5 ⭐</p>
+      <p><strong>Opinión:</strong> "{{ cita.Opinion }}"</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item *ngIf="citas && citas.length === 0">
+    <ion-label>No hay citas asignadas.</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary" (click)="regresar()" class="ion-margin-top">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+
+</ion-content>

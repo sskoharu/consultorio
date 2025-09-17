@@ -44,6 +44,10 @@ export const routes: Routes = [
   {
     path: 'historial-cita-paciente',
     loadComponent: () => import('./historial-cita-paciente/historial-cita-paciente.page').then( m => m.HistorialCitaPacientePage)
+  },
+  {
+    path: 'recuperar-clave',
+    loadComponent: () => import('./recuperar-clave/recuperar-clave.page').then( m => m.RecuperarClavePage)
   }
 
 ];

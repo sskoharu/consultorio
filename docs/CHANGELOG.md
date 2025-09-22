@@ -4,13 +4,13 @@ Todas las versiones relevantes de este proyecto.
 
 ## [1.1.0] - 2025-09-21
 ### Added
-- Guía de contribución en README y /docs. (#101)
+- Calificación de citas.
 
 ### Changed
-- Tabla "Versiones" en README con fecha y notas breves.
+- Recuperación de clave mediante tokens.
 
 ### Fixed
-- (Si aplica) Corrección menor en enlaces.
+- Corrección de inicio de sesión no detectaba odontologos.
 
 ## [1.0.0] - 2025-09-07
 ### Added

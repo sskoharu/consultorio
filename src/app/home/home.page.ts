@@ -13,7 +13,7 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonLoading, FormsModule,IonButton, IonInput, IonIcon, IonItem, IonCardContent, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol],
+  imports: [ FormsModule,IonButton, IonInput, IonIcon, IonItem, IonCardContent, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonCol],
   standalone: true,
 })
 export class HomePage {

@@ -31,7 +31,7 @@ export class HomePage {
       contrasena: this.txt_cla
     }
      this.servicio.postData(datos).subscribe(async (res: any) => {
-    console.log("Respuesta del servidor:", res); // 👈 Aquí ves todo
+    console.log("Respuesta del servidor:", res); //  Aquí ves todo
 
     if (res.estado) {
       const usuario = res.persona[0];

@@ -38,7 +38,7 @@ Repositorio oficial del proyecto **“Gestión de Citas Odontológicas”**, des
 
 ---
 
-## 📌 Líneas Base y Contabilidad de Estado (CSA)
+##  Líneas Base y Contabilidad de Estado (CSA)
 | IC                  | Versión | Estado     | Responsable   | Fecha       |
 |--------------------|---------|------------|---------------|------------|
 | Frontend (Ionic)    | v1.1.0  | Liberado   | M. Obregon    | 2025-07-13 |
@@ -48,7 +48,7 @@ Repositorio oficial del proyecto **“Gestión de Citas Odontológicas”**, des
 
 ---
 
-## 📋 Control de Cambios (CR/CCB)
+##  Control de Cambios (CR/CCB)
 - **Ejemplo:** CR-2025-001
   - Descripción: Actualizar almacenamiento de contraseñas usando hash bcrypt.
   - Impacto: Backend, documentación técnica, pruebas unitarias y E2E.
@@ -58,7 +58,7 @@ Repositorio oficial del proyecto **“Gestión de Citas Odontológicas”**, des
 
 ---
 
-## 📑 Auditorías FCA / PCA
+##  Auditorías FCA / PCA
 - **FCA (Funcional):** Verifica que la versión cumple requisitos funcionales.  
 - **PCA (Physical / Product):** Verifica que el producto coincide con la documentación técnica.  
 
@@ -69,7 +69,7 @@ Repositorio oficial del proyecto **“Gestión de Citas Odontológicas”**, des
 
 ---
 
-## 🚀 Releases y Release Notes
+##  Releases y Release Notes
 ### v1.0.0 – 2025-08-22
 - **Added:** Reprogramación de citas, módulo de notificaciones push  
 - **Changed:** Ajustes en interfaz calendario  

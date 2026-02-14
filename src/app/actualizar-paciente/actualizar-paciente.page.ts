@@ -33,7 +33,7 @@ txt_cedula: string = ""
     if (resp.estado) {
       const datos = resp.datos;
 
-      // Asignar a las variables que se enlazan al formulario
+      
       this.txt_cedula = datos.Cedula;
       this.txt_nombre = datos.Nombre;
       this.txt_apellido = datos.Apellido;

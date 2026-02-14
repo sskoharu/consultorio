@@ -16,12 +16,11 @@ export class RecuperarClavePage implements OnInit {
 
   txt_nuevaClave: string = '';
   txt_confirmClave: string = '';
-  token: string = ''; // <-- token de la URL
+  token: string = ''; 
 
   constructor(private servicio: AccesoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Capturar token de la URL
     this.route.queryParams.subscribe(params => {
       this.token = params['token'] || '';
     });

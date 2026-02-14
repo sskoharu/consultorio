@@ -56,7 +56,7 @@ export class ActualizarCitaPage {
 
   const datos = {
     accion: 'cita_fecha',
-    fecha: this.fechaHoraFormateada.substring(0, 10)  // solo fecha sin hora
+    fecha: this.fechaHoraFormateada.substring(0, 10)  
   };
 
   this.servicio.postData(datos).subscribe((resp: any) => {

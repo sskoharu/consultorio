@@ -50,7 +50,7 @@ validarFecha(event: any) {
 
   const datos = {
     accion: 'cita_fecha',
-    fecha: this.fechaHoraFormateada.substring(0, 10)  // solo fecha sin hora
+    fecha: this.fechaHoraFormateada.substring(0, 10)  
   };
 
   this.servicio.postData(datos).subscribe((resp: any) => {
@@ -92,11 +92,11 @@ async guardarCita() {
     return;
   }
 
-  // Extraer solo la fecha y hora seleccionada
+  
   const fechaSeleccionada = this.fechaHoraFormateada.substring(0, 10);
-  const horaSeleccionada = this.fechaHoraFormateada.substring(11, 13); // 'HH' del formato 'YYYY-MM-DD HH:mm:ss'
+  const horaSeleccionada = this.fechaHoraFormateada.substring(11, 13); 
 
-  // Primero consultamos los horarios ocupados de ese día
+  
   const datosConsulta = {
     accion: 'cita_fecha',
     fecha: fechaSeleccionada
@@ -104,10 +104,10 @@ async guardarCita() {
 
   this.servicio.postData(datosConsulta).subscribe(async (resp: any) => {
     if (resp.estado) {
-      // Extraer solo la hora sin minutos de cada hora ocupada
+      
       const horasOcupadasSoloHora = resp.horasOcupadas.map((h: string) => h.substring(0, 2));
 
-      // Verificamos si la hora seleccionada está ocupada
+      
       if (horasOcupadasSoloHora.includes(horaSeleccionada)) {
         const toast = await this.toastCtrl.create({
           message: `La hora ${horaSeleccionada}:00 ya está ocupada, elija otra.`,
@@ -115,9 +115,9 @@ async guardarCita() {
           color: 'danger'
         });
         toast.present();
-        return; // Cancelar registro
+        return; 
       } else {
-        // No está ocupada, registrar cita normalmente
+        
         let datos = {
           accion: 'registrar_cita',
           PacienteId: pacienteId,

@@ -14,7 +14,7 @@ import { AccesoService } from '../servicio.service';
   imports: [IonButton, IonLabel, IonItem,IonTitle,IonAvatar, IonIcon, IonToolbar, IonCardContent, IonContent, IonHeader,IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, CommonModule, FormsModule]
 })
 export class MenuOdontologoPage implements OnInit {
-  citas: any[] = []; // Inicializar como un array vacío
+  citas: any[] = []; 
   constructor(private servicio:AccesoService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
@@ -29,7 +29,7 @@ export class MenuOdontologoPage implements OnInit {
   };
   this.servicio.postData(datos).subscribe((resp: any) => {
     if (resp.estado) {
-      this.citas = resp.citas; // debe ser un array
+      this.citas = resp.citas; 
     } else {
       this.citas = [];
     }
@@ -55,7 +55,7 @@ async finalizarCita(cita: any) {
 
           this.servicio.postData(datos).subscribe((resp: any) => {
             if (resp.estado) {
-              // Elimina la cita del array
+              
               this.citas = this.citas.filter(c => c.Id !== cita.Id);
               this.mostrarToast('Cita finalizada con éxito');
             } else {

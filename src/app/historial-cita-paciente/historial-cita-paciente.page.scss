@@ -66,7 +66,7 @@ ion-button:active {
   }
 }
 
-/* Colores por estado */
+
 .estado-confirmada {
   border-left: 6px solid #10dc60;
   box-shadow: 0 0 12px rgba(16, 220, 96, 0.3);
@@ -84,7 +84,7 @@ ion-button:active {
   box-shadow: 0 0 12px rgba(150, 150, 150, 0.2);
 }
 
-/* Soporte modo claro */
+
 @media (prefers-color-scheme: light) {
   ion-content::before {
     background-color: rgba(255, 255, 255, 0.5);

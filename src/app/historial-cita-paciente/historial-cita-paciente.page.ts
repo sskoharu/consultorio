@@ -120,11 +120,11 @@ guardarCalificacion(citaId: number, calificacion: number, opinion: string) {
 
   this.servicio.postData(datos).subscribe((resp: any) => {
     if (resp.estado) {
-      // Opcional: actualizar localmente el array para reflejar la calificación sin recargar
+      
       const cita = this.citasPaciente.find(c => c.Id === citaId);
       if (cita) cita.Calificacion = calificacion;
 
-      // Mostrar mensaje de éxito
+      
       this.servicio.showToast('Calificación guardada con éxito',3000);
     } else {
       this.servicio.showToast('Error al guardar la calificación',3000);

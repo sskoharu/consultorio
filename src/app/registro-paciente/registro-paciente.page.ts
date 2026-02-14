@@ -28,7 +28,7 @@ export class RegistroPacientePage implements OnInit {
   ngOnInit() {
   }
 registrarPaciente() {
-  // Validaciones
+  
   if (!this.txt_cedula || this.txt_cedula.length !== 10 || !/^\d{10}$/.test(this.txt_cedula)) {
     this.servicio.showToast('La cédula debe tener exactamente 10 números', 3000);
     return;
@@ -65,7 +65,7 @@ registrarPaciente() {
     return;
   }
 
-  // Si todas las validaciones pasan
+  
   const datos = {
     accion: 'registrar_paciente',
     cedula: this.txt_cedula,

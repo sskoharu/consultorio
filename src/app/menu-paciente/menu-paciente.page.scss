@@ -1,4 +1,4 @@
-/* Fondo con zoom animado */
+
 ion-content {
   --background: transparent;
   background: url('/assets/fondo-panel.jpg') no-repeat center center / cover;
@@ -15,7 +15,7 @@ ion-content {
   }
 }
 
-/* Capa oscura para mejorar contraste */
+
 ion-content::before {
   content: '';
   position: absolute;
@@ -27,7 +27,7 @@ ion-content::before {
   z-index: 0;
 }
 
-/* Asegura que los elementos estén por encima del fondo */
+
 ion-card,
 ion-card-header,
 ion-card-content,
@@ -36,7 +36,6 @@ ion-button {
   z-index: 1;
 }
 
-/* Animación fade-in */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -52,7 +51,7 @@ ion-button {
   animation: fadeInUp 0.8s ease-out;
 }
 
-/* Estilo de tarjetas */
+
 ion-card {
   background-color: rgba(31, 31, 31, 0.95);
   border-radius: 16px;
@@ -68,7 +67,7 @@ ion-card {
   padding: 16px;
 }
 
-/* Títulos */
+
 ion-card-title {
   font-size: 20px;
   font-weight: bold;
@@ -84,7 +83,6 @@ ion-card-content p {
 
 
 
-/* Botones con efecto hover */
 ion-button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -100,7 +98,7 @@ ion-button:active {
 }
 
 
-/* Responsive ajustes */
+
 @media (max-width: 600px) {
   ion-button {
     font-size: 15px;
@@ -111,7 +109,7 @@ ion-button:active {
   }
 }
 
-/* Soporte para modo claro */
+
 @media (prefers-color-scheme: light) {
   ion-content::before {
     background-color: rgba(255, 255, 255, 0.5);

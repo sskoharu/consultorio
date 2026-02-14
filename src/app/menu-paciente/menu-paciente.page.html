@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding" [fullscreen]="true">
 
-  <!-- Botones principales -->
+  
   <ion-card class="ion-padding fade-in">
     <ion-button expand="block" color="primary" class="fade-in" (click)="RegistrarCita()">
       <ion-icon name="calendar-outline" slot="start"></ion-icon>
@@ -29,7 +29,7 @@
     </ion-button>
   </ion-card>
 
-  <!-- Información de la cita -->
+  
   <ion-card *ngIf="citaPaciente" class="info-cita-card fade-in">
     <ion-card-header>
       <ion-card-title>Información de la Cita</ion-card-title>
@@ -45,7 +45,7 @@
       <p><strong>Teléfono:</strong> {{ odontologoDatos?.Telefono }}</p>
     </ion-card-content>
 
-    <!-- Botones de acción -->
+    
     <ion-grid>
       <ion-row class="ion-justify-content-around">
         <ion-col size="auto">
@@ -64,7 +64,7 @@
     </ion-grid>
   </ion-card>
 
-  <!-- Si no hay cita -->
+  
   <ion-card *ngIf="!citaPaciente" class="ion-text-center fade-in">
     <ion-card-content>
       <ion-icon name="calendar-clear-outline" size="large" color="medium"></ion-icon>

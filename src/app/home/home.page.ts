@@ -31,7 +31,7 @@ export class HomePage {
       contrasena: this.txt_cla
     }
      this.servicio.postData(datos).subscribe(async (res: any) => {
-    console.log("Respuesta del servidor:", res); //  Aquí ves todo
+    console.log("Respuesta del servidor:", res); 
 
     if (res.estado) {
       const usuario = res.persona[0];
@@ -40,7 +40,7 @@ export class HomePage {
       await this.servicio.createSession("email", usuario.email);
       await this.servicio.createSession("rol", usuario.rol);
       if (usuario.rol === "Paciente") {
-        // Ya no necesitas usuario.idpaciente, porque usuario.id es el paciente
+        
         await this.servicio.createSession("pacienteId", usuario.id);
         this.navCtrl.navigateRoot(['/menu-paciente']);
       } else if (usuario.rol === "Odontologo") {
@@ -59,7 +59,7 @@ async registro() {
     component: RegistroPacientePage,
   });
 
-  await modal.present(); // <- ESTO es necesario para mostrarlo
+  await modal.present(); 
 }
 async recuperar() {
   if (!this.txt_usu || this.txt_usu.trim() === '') {
@@ -85,7 +85,7 @@ async recuperar() {
           };
 
           this.servicio.postData(datos).subscribe((resp: any) => {
-            // Aquí puedes manejar la respuesta, por ejemplo:
+            
             if (resp.estado) {
               this.servicio.showToast('Correo enviado con éxito', 3000);
             } else {

@@ -4,7 +4,7 @@ ion-content {
   position: relative;
 }
 
-// Capa oscura encima del fondo
+
 ion-content::before {
   content: '';
   position: absolute;
@@ -12,11 +12,11 @@ ion-content::before {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6); // Fondo negro con transparencia
+  background-color: rgba(0, 0, 0, 0.6); 
   z-index: 1;
 }
 
-// Asegura que todo el contenido esté por encima del overlay
+
 .login-wrapper,
 .titulo,
 .subtitulo,
@@ -48,7 +48,7 @@ ion-content::before {
 }
 
 .login-card {
-  background-color: rgba(31, 31, 31, 0.9); // un poco translúcido para estética sobre fondo
+  background-color: rgba(31, 31, 31, 0.9); 
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -98,7 +98,7 @@ ion-input::part(native) {
   }
 
   ion-content::before {
-    background-color: rgba(255, 255, 255, 0.5); // overlay claro para modo claro
+    background-color: rgba(255, 255, 255, 0.5); 
   }
 
   .titulo {
@@ -138,5 +138,5 @@ ion-content::before {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 0; // ← CAMBIA de 1 a 0
+  z-index: 0; 
 }

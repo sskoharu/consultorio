@@ -20,7 +20,6 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
   imports: [
     CommonModule,
     FormsModule,
-    // Ionic components usados en el HTML:
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -61,7 +60,6 @@ async ngOnInit() {
     if (resp.estado) {
       this.citaPaciente = resp.cita;
 
-      // Llamar función para obtener datos del odontólogo
       this.cargarDatosOdontologo(this.citaPaciente.OdontologoId);
     } else {
       this.citaPaciente = null;
@@ -102,7 +100,6 @@ async modificarCita(cita: any) {
 
   const { data } = await modal.onDidDismiss();
   if (data?.actualizado) {
-    // refrescar la cita o volver a llamar ngOnInit()
     this.ngOnInit();
   }
 }
@@ -119,7 +116,6 @@ async cancelarCita(cita: any) {
       {
         text: 'Sí, cancelar',
         handler: () => {
-          // Si confirma, se procede a cancelar
           const datos = {
             accion: 'cancelar_cita',
             Id: cita.Id

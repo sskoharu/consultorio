@@ -12,7 +12,7 @@ import { AccesoService } from '../servicio.service';
   imports: [IonLabel, IonItem, IonCardContent, IonIcon, IonHeader, IonTitle, IonToolbar,IonCardSubtitle, IonButton,IonCardTitle,IonContent, IonCardHeader, IonCard,  CommonModule, FormsModule]
 })
 export class HistorialCitaPage implements OnInit {
- citas: any[] = []; // Inicializar como un array vacío
+ citas: any[] = []; 
   constructor(private servicio:AccesoService,
      private navCtrl:NavController) { }
 
@@ -27,7 +27,7 @@ export class HistorialCitaPage implements OnInit {
 
   this.servicio.postData(datos).subscribe((resp: any) => {
     if (resp.estado) {
-      this.citas = resp.citas; // debe ser un array
+      this.citas = resp.citas; 
     } else {
       this.citas = [];
     }

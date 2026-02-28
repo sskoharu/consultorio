@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonItem, IonLabel, IonButton, IonHeader, IonToolbar, IonTitle, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonItem, IonLabel, IonButton, IonHeader, IonToolbar, IonTitle, IonIcon, IonCol, IonRow, IonGrid } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 import { ModalController } from '@ionic/angular/standalone';
 @Component({
@@ -9,7 +9,7 @@ import { ModalController } from '@ionic/angular/standalone';
   templateUrl: './registro-paciente.page.html',
   styleUrls: ['./registro-paciente.page.scss'],
   standalone: true,
-  imports: [ IonTitle, IonToolbar, IonHeader, IonButton,  IonContent, CommonModule, FormsModule]
+  imports: [IonGrid, IonRow, IonCol, IonTitle, IonToolbar, IonHeader, IonButton, IonContent, CommonModule, FormsModule, IonItem, IonLabel]
 })
 export class RegistroPacientePage implements OnInit {
   

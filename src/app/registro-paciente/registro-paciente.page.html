@@ -1,19 +1,78 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Registro Paciente</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="ion-padding">
-  <ion-input placeholder="Cédula" [(ngModel)]="txt_cedula" name="cedula" ngDefaultControl></ion-input>
-<ion-input placeholder="Nombre" [(ngModel)]="txt_nombre" name="nombre" ngDefaultControl></ion-input>
-<ion-input placeholder="Apellido" [(ngModel)]="txt_apellido" name="apellido" ngDefaultControl></ion-input>
-<ion-input type="number" placeholder="Edad" [(ngModel)]="txt_edad" name="edad" ngDefaultControl></ion-input>
-<ion-input type="tel" placeholder="Teléfono" [(ngModel)]="txt_telefono" name="telefono" ngDefaultControl></ion-input>
-<ion-input type="email" placeholder="Correo" [(ngModel)]="txt_correo" name="correo" ngDefaultControl></ion-input>
-<ion-input type="password" name="contrasena" [(ngModel)]="txt_contrasena" ngDefaultControl></ion-input>
-  <div class="ion-margin-top">
-    <ion-button expand="block" (click)="registrarPaciente()">Registrar</ion-button>
-    <ion-button expand="block" color="medium" (click)="cerrarModal()">Cancelar</ion-button>
-  </div>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding fullscreen-grid">
+    <ion-row class="full-height-row">
+      
+      <ion-col size-lg="6" class="ion-hide-lg-down register-image-side">
+        <div class="overlay"></div>
+        <div class="welcome-text">
+          <h1>¡Únete a nuestra <br><span>familia dental!</span></h1>
+          <p>Crea tu cuenta en menos de un minuto y accede a la mejor atención odontológica.</p>
+        </div>
+      </ion-col>
 
+      <ion-col size="12" size-lg="6" class="form-side scrollable-form">
+        <div class="register-box">
+          
+          <div class="header-text">
+            <h2>Crea tu Perfil</h2>
+            <p>Completa tus datos personales para empezar</p>
+          </div>
+          
+          <div class="form-container">
+            <ion-row>
+              <ion-col size="12" size-md="6">
+                <ion-item lines="none" class="floating-input">
+                  <ion-label position="floating">Cédula / ID</ion-label>
+                  <ion-input [(ngModel)]="txt_cedula"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" size-md="6">
+                <ion-item lines="none" class="floating-input">
+                  <ion-label position="floating">Edad</ion-label>
+                  <ion-input type="number" [(ngModel)]="txt_edad"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-label position="floating">Nombre Completo</ion-label>
+              <ion-input [(ngModel)]="txt_nombre"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-label position="floating">Apellidos</ion-label>
+              <ion-input [(ngModel)]="txt_apellido"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-label position="floating">Teléfono de Contacto</ion-label>
+              <ion-input type="tel" [(ngModel)]="txt_telefono"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-label position="floating">Correo Electrónico</ion-label>
+              <ion-input type="email" [(ngModel)]="txt_correo"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-label position="floating">Contraseña Nueva</ion-label>
+              <ion-input type="password" [(ngModel)]="txt_contrasena"></ion-input>
+            </ion-item>
+
+            <div class="action-buttons">
+              <ion-button expand="block" class="btn-modern" (click)="registrarPaciente()">
+                FINALIZAR REGISTRO
+              </ion-button>
+              
+              <ion-button expand="block" fill="clear" color="medium" (click)="cerrarModal()">
+                Regresar al inicio
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

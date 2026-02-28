@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonItem, IonIcon, IonInput, IonButton, IonLoading, NavController, IonModal, ModalController, AlertController, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonItem, IonIcon, IonInput, IonButton, IonLoading, NavController, IonModal, ModalController, AlertController, IonGrid, IonRow, IonCol, IonLabel } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 import { MenuPacientePage } from '../menu-paciente/menu-paciente.page';
 import { MenuOdontologoPage } from '../menu-odontologo/menu-odontologo.page';
@@ -13,7 +13,7 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [ FormsModule,IonButton, IonInput, IonIcon, IonItem, IonCardContent, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonCol],
+  imports: [IonLabel, FormsModule, IonButton, IonInput, IonIcon, IonItem, IonCardContent, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonCol, IonRow, IonGrid],
   standalone: true,
 })
 export class HomePage {

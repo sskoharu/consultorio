@@ -1,54 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Consultorio Odontológico</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding" [fullscreen]="true">
-  <div class="fullscreen-center">
-
-    <ion-col size="12" size-md="8" size-lg="5">
-      <div class="login-wrapper">
-
-        <h2 class="titulo ion-text-center">Bienvenido</h2>
-        <p class="subtitulo ion-text-center">Inicia sesión para continuar</p>
-
-        <ion-card class="login-card">
-          <ion-card-content>
-
-            <ion-item lines="none">
-              <ion-icon name="person-outline" slot="start"></ion-icon>
-              <ion-input [(ngModel)]="txt_usu" placeholder="Usuario" clearInput></ion-input>
-            </ion-item>
-
-            <ion-item lines="none">
-              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-              <ion-input [(ngModel)]="txt_cla" type="password" placeholder="Contraseña" clearInput></ion-input>
-            </ion-item>
-
-            <ion-button expand="block" color="primary" class="ion-margin-top" (click)="login()">
-              <ion-icon name="log-in-outline" slot="start"></ion-icon>
-              Iniciar Sesión
-            </ion-button>
-
-          </ion-card-content>
-        </ion-card>
-
-        
-        <div class="extra-buttons">
-          <ion-button expand="block" color="secondary" (click)="registro()">
-            <ion-icon name="person-add-outline" slot="start"></ion-icon>
-            Registrarse
-          </ion-button>
-
-          <ion-button expand="block" fill="clear" color="light" (click)="recuperar()">
-            <ion-icon name="help-circle-outline" slot="start"></ion-icon>
-            <span class="underline">Olvidé mi contraseña</span>
-          </ion-button>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding fullscreen-grid">
+    <ion-row class="ion-align-items-center full-height-row">
+      
+      <ion-col size-lg="7" class="ion-hide-lg-down image-side">
+        <div class="overlay"></div>
+        <div class="welcome-text">
+          <h1>Tu sonrisa, <br><span>nuestra prioridad.</span></h1>
+          <p>Gestiona tus citas de manera rápida y segura desde cualquier lugar.</p>
         </div>
+      </ion-col>
 
-      </div>
-    </ion-col>
+      <ion-col size="12" size-lg="5" class="form-side">
+        <div class="login-box">
+          
+          <div class="logo-wrapper-square">
+            <img src="assets/logo-dientes.jpg" alt="Logo Consultorio" />
+          </div>
 
-  </div>
+          <div class="header-text">
+            <h2>¡Hola de nuevo!</h2>
+            <p>Ingresa tus credenciales para acceder</p>
+          </div>
+          
+          <div class="form-container">
+            <ion-item lines="none" class="floating-input">
+              <ion-icon name="mail-outline" slot="start"></ion-icon>
+              <ion-label position="floating">Correo Electrónico</ion-label>
+              <ion-input type="email" [(ngModel)]="txt_usu"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="floating-input">
+              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input type="password" [(ngModel)]="txt_cla"></ion-input>
+            </ion-item>
+
+            <ion-button expand="block" class="btn-modern" (click)="login()">
+              ENTRAR
+            </ion-button>
+          </div>
+          
+          <div class="footer-links">
+            <a (click)="recuperar()">¿Olvidaste tu clave?</a>
+            <div class="divider"></div>
+            <p>¿No tienes cuenta? <span class="register-link" (click)="registro()">Regístrate aquí</span></p>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, NavController,
-IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonRow, IonCol, 
-ModalController, IonAlert, IonGrid, IonIcon} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, NavController, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonRow, IonCol, ModalController, IonAlert, IonGrid, IonIcon, IonLabel, IonItem, IonList, IonButtons, IonAvatar } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { ActualizarCitaPage } from '../actualizar-cita/actualizar-cita.page';
@@ -33,14 +31,20 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
     IonRow,
     IonCol,
     IonIcon,
-    IonGrid
-  ]
+    IonGrid,
+    IonLabel,
+    IonItem,
+    IonList,
+    IonButtons,
+    IonAvatar
+]
 })
 
 export class MenuPacientePage implements OnInit {
   odontologoDatos: any = null;
-
   citaPaciente: any = null;
+nombreUsuario: string = 'Paciente';
+  fechaHoy: Date = new Date();
   constructor(private navCtrl:NavController,
     private servicio:AccesoService,
     private alertCtrl: AlertController,
@@ -48,6 +52,10 @@ export class MenuPacientePage implements OnInit {
     private modalCtrl: ModalController
   ) { }
 async ngOnInit() {
+  const nombreGuardado = await this.servicio.getSession('pacienteNombre'); 
+    if (nombreGuardado) {
+      this.nombreUsuario = nombreGuardado;
+    }
   const id = await this.servicio.getSession('pacienteId');
   console.log('ID de paciente recuperado de sesión:', id);
 

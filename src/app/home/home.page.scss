@@ -1,10 +1,10 @@
-// Contenedores de altura completa
+
 .fullscreen-grid, .full-height-row {
   height: 100%;
   min-height: 100vh;
 }
 
-// Lado de la imagen (Solo PC)
+
 .image-side {
   background: url('/assets/fondo-login.jpg') no-repeat center center / cover;
   height: 100vh;
@@ -26,18 +26,19 @@
     padding: 60px;
     h1 { 
         font-size: 3.5rem; font-weight: 800; 
-        span { color: #52fffc; } // Un color de acento
+        span { color: #52fffc; } 
     }
     p { font-size: 1.2rem; opacity: 0.9; }
   }
 }
 
-// Lado del Formulario
+
 .form-side {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa; // Fondo gris muy claro para que resalte el blanco
+  background: #ffffff;
+  color: #333333;
 }
 
 .login-box {
@@ -47,14 +48,13 @@
   text-align: center;
 }
 
-// TRUCO PARA EL LOGO CUADRADO
 .logo-wrapper-square {
   width: 100px;
   height: 100px;
   margin: 0 auto 20px;
   background: white;
   padding: 10px;
-  border-radius: 18px; // "Squircle": ni círculo ni cuadrado puro
+  border-radius: 18px; 
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   
   img {
@@ -67,25 +67,30 @@
 
 .header-text {
   margin-bottom: 30px;
-  h2 { font-weight: 700; color: #333; margin-bottom: 5px; }
-  p { color: #777; font-size: 0.9rem; }
+  h2 { 
+    font-weight: 700; 
+    color: #1a1a1a; 
+    margin-bottom: 5px; 
+  }
+  p { 
+    color: #666666; 
+    font-size: 0.95rem; 
+  }
 }
 
-// Inputs flotantes modernos
+
 .floating-input {
-  --background: white;
-  --border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: 0.3s;
-  border: 1px solid #eee;
-
-  &.item-has-focus {
-    border: 1px solid var(--ion-color-primary);
-    box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.15);
+  --background: #f9f9f9; 
+  --color: #333333;      
+  --placeholder-color: #999999;
+  
+  ion-label {
+    color: #555555 !important; 
   }
-
-  ion-icon { color: var(--ion-color-primary); margin-right: 10px; }
+  
+  ion-icon { 
+    color: var(--ion-color-primary); 
+  }
 }
 
 .btn-modern {
@@ -98,7 +103,16 @@
 
 .footer-links {
   margin-top: 30px;
-  a { text-decoration: none; color: var(--ion-color-primary); font-size: 0.9rem; }
-  .divider { height: 1px; background: #eee; margin: 20px 0; }
-  .register-link { color: var(--ion-color-primary); font-weight: 700; cursor: pointer; }
+  a { 
+    color: var(--ion-color-primary); 
+    font-weight: 600;
+  }
+  p { 
+    color: #444444; 
+  }
+  .register-link { 
+    color: var(--ion-color-primary); 
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

@@ -1,102 +1,139 @@
-ion-content {
-  --background: transparent;
-  background: url('/assets/fondo-cita.jpg') no-repeat center center / cover;
+
+.step-container {
   position: relative;
-  animation: zoomBackground 40s ease-in-out infinite alternate;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  border-left: 2px dashed rgba(255,255,255,0.3); 
 }
 
-ion-content::before {
-  content: '';
+
+.step-badge {
   position: absolute;
+  left: -16px;
   top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.65); 
-  z-index: 0;
-}
-
-.form-card {
-  background-color: rgba(25, 25, 25, 0.95); 
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 0.8s ease-out;
+  width: 30px;
+  height: 30px;
+  background: var(--ion-color-primary);
   color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(var(--ion-color-primary-rgb), 0.5);
+  z-index: 2;
 }
 
-.input-item {
-  border-radius: 8px;
-  margin-bottom: 12px;
-  --background: rgba(50, 50, 50, 0.8); 
-  --color: #fff;
-}
+.modern-step-card {
+  background: white !important;
+  border-radius: 18px !important;
+  margin: 0 !important;
+  color: #333;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 
-ion-input::part(native),
-ion-select::part(text),
-ion-datetime::part(native) {
-  color: #fff;
-}
-
-ion-label {
-  color: #ccc;
-}
-
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomBackground {
-  0% {
-    background-size: 100%;
-  }
-  100% {
-    background-size: 110%;
+  ion-card-title {
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 }
 
 
-ion-button {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-ion-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-ion-button:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-
-@media (prefers-color-scheme: light) {
-  ion-content::before {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  .form-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #000;
-  }
-
-  .input-item {
-    --background: #f2f2f2;
-    --color: #000;
-  }
-
+.custom-input-box {
+  --background: #f8f9fa;
+  --border-radius: 10px;
+  --padding-start: 15px;
+  border: 1px solid #eee;
+  
   ion-label {
+    color: var(--ion-color-primary) !important;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+}
+
+
+.styled-datetime {
+  --background: white;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.main-confirm-btn {
+  --border-radius: 50px;
+  height: 60px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  --box-shadow: 0 10px 20px rgba(var(--ion-color-primary-rgb), 0.4);
+  margin-top: 20px;
+}
+
+.selected-info {
+  text-align: center;
+  color: white;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.dark-title {
+  color: #1a1a1a !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.dark-label {
+  color: #444 !important; 
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 5px !important;
+  opacity: 1 !important;
+}
+
+.custom-input-box {
+  --background: #f0f2f5;
+  --color: #1a1a1a;      
+  border: 1px solid #dcdcdc;
+  
+ 
+  .dark-text-input {
+    --placeholder-color: #777;
+    color: #000 !important;
+    font-weight: 500;
+  }
+
+  
+  .dark-select {
+    color: #000 !important;
+    font-weight: 500;
+    --placeholder-color: #666;
+  }
+}
+
+
+.btn-cancelar-ultra {
+  --color: #ffffff;      
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.5); 
+  
+  &::part(native) {
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 50px;
+  }
+
+  &:hover {
+    --color: var(--ion-color-danger); 
+  }
+}
+
+.styled-datetime {
+  --background: #ffffff;
+  color: #000 !important;
+  
+  &::part(calendar-day) {
     color: #333;
   }
 }

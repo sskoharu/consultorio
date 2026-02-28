@@ -1,38 +1,85 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Historial de Citas</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mi Historial Dental</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content scroll-y="true" [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="historial-content">
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="10" size-lg="8">
 
-<ion-card *ngFor="let cita of citasPaciente" class="historial-card fade-in">
-    <ion-card-header>
-      <ion-card-title>Información de la cita</ion-card-title>
-      <ion-card-subtitle>Motivo: {{ cita.Motivo }}</ion-card-subtitle>
-      <ion-card-subtitle>Estado: {{ cita.Estado }}</ion-card-subtitle>
-      <ion-card-subtitle>Fecha: {{ cita.Fecha | date: 'short' }}</ion-card-subtitle>
-      <ion-card-subtitle>Calificación: {{ cita.Calificacion }} / 5 ⭐</ion-card-subtitle>
-      <ion-card-subtitle>Opinión: {{ cita.Opinion }}</ion-card-subtitle>
-      <ion-card-subtitle>Dentista: {{ odontologosDatosMap[cita.OdontologoId]?.Nombre }} {{ odontologosDatosMap[cita.OdontologoId]?.Apellido }}</ion-card-subtitle>
-      <ion-card-subtitle>Especialidad: {{ odontologosDatosMap[cita.OdontologoId]?.Especialidad }}</ion-card-subtitle>
-      <ion-card-subtitle>Correo: {{ odontologosDatosMap[cita.OdontologoId]?.Email }}</ion-card-subtitle>
-      <ion-card-subtitle>Teléfono: {{ odontologosDatosMap[cita.OdontologoId]?.Telefono }}</ion-card-subtitle>
+        <div *ngFor="let cita of citasPaciente" class="timeline-item fade-in">
+          
+          <div class="date-marker">
+            <span class="day">{{ cita.Fecha | date: 'dd' }}</span>
+            <span class="month">{{ cita.Fecha | date: 'MMM' }}</span>
+          </div>
 
-      <ion-button expand="block" color="primary" (click)="abrirCalificacion(cita.Id)" class="ion-margin-top">
-        <ion-icon name="star-outline" slot="start"></ion-icon>
-        Calificar
-      </ion-button>
-    </ion-card-header>
-  </ion-card>
+          <ion-card class="historial-card-modern" [ngClass]="'border-' + cita.Estado.toLowerCase()">
+            <ion-card-content>
+              
+              <div class="card-top">
+                <div class="motivo-box">
+                  <h2 class="dark-text">{{ cita.Motivo }}</h2>
+                  <p class="doctor-sub">Con el Dr. {{ odontologosDatosMap[cita.OdontologoId]?.Nombre + ' ' + odontologosDatosMap[cita.OdontologoId]?.Apellido }}</p>
+                </div>
+                <div class="status-pill" [ngClass]="cita.Estado.toLowerCase()">
+                  {{ cita.Estado }}
+                </div>
+              </div>
 
-  <ion-item *ngIf="citasPaciente.length === 0" class="fade-in ion-text-center">
-    <ion-label>No tiene citas atendidas.</ion-label>
-  </ion-item>
+              <hr class="divider">
 
-  <ion-button expand="block" color="secondary" (click)="regresar()" class="ion-margin-top fade-in">
-    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-    Regresar
-  </ion-button>
+              <ion-row class="details-grid">
+                <ion-col size="12" size-sm="6">
+                  <p class="detail-item">
+                    <ion-icon name="star" class="star-icon"></ion-icon>
+                    <strong>Calificación:</strong> {{ cita.Calificacion || 'Sin calificar' }} / 5
+                  </p>
+                  <p class="detail-item">
+                    <ion-icon name="chatbubble-outline"></ion-icon>
+                    <strong>Opinión:</strong> {{ cita.Opinion || 'Sin comentarios' }}
+                  </p>
+                </ion-col>
+                <ion-col size="12" size-sm="6" class="contact-col">
+                  <p class="detail-item">
+                    <ion-icon name="mail-outline"></ion-icon> {{ odontologosDatosMap[cita.OdontologoId]?.Email }}
+                  </p>
+                  <p class="detail-item">
+                    <ion-icon name="call-outline"></ion-icon> {{ odontologosDatosMap[cita.OdontologoId]?.Telefono }}
+                  </p>
+                </ion-col>
+              </ion-row>
 
+              <div class="action-zone">
+                <ion-button fill="outline" size="small" (click)="abrirCalificacion(cita.Id)" class="btn-rate">
+                  <ion-icon name="star-outline" slot="start"></ion-icon>
+                  Calificar Servicio
+                </ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <div *ngIf="citasPaciente.length === 0" class="empty-historial fade-in">
+          <ion-icon name="calendar-clear-outline"></ion-icon>
+          <h3>No hay citas registradas</h3>
+          <p>Tu historial aparecerá aquí una vez que asistas a una consulta.</p>
+        </div>
+
+        <ion-button expand="block" class="btn-regresar-ultra" (click)="regresar()">
+          <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+          VOLVER AL PANEL
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

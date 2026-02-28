@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonIcon,IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonCardContent, IonItem, IonLabel, NavController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonIcon,IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonCardContent, IonItem, IonLabel, NavController, IonFab, IonFabButton, IonBadge, IonButtons, IonCol, IonRow, IonGrid } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AccesoService } from '../servicio.service';
   templateUrl: './historial-cita.page.html',
   styleUrls: ['./historial-cita.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, IonCardContent, IonIcon, IonHeader, IonTitle, IonToolbar,IonCardSubtitle, IonButton,IonCardTitle,IonContent, IonCardHeader, IonCard,  CommonModule, FormsModule]
+  imports: [IonGrid, IonRow, IonCol, IonButtons, IonBadge, IonFabButton, IonFab, IonLabel, IonItem, IonCardContent, IonIcon, IonHeader, IonTitle, IonToolbar,IonCardSubtitle, IonButton,IonCardTitle,IonContent, IonCardHeader, IonCard,  CommonModule, FormsModule]
 })
 export class HistorialCitaPage implements OnInit {
  citas: any[] = []; 

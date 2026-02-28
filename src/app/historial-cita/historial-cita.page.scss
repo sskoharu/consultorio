@@ -1,37 +1,149 @@
-ion-card {
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  background-color: #1f1f1f;
-  color: white;
+.history-content {
+  --background: #f0f2f5;
+
+  .history-card {
+    background: white !important;
+    border-radius: 18px !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    margin-bottom: 20px;
+
+    .header-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      .cita-id { font-size: 0.75rem; color: #999; font-weight: 600; }
+    }
+
+    .date-title {
+      font-weight: 800;
+      color: #1a1a1a !important;
+      font-size: 1.1rem;
+      small { color: #666; font-weight: 400; margin-left: 5px; }
+    }
+
+    .patient-section {
+      margin-top: 10px;
+      .patient-name { color: var(--ion-color-primary); font-weight: 700; margin: 0 0 8px 0; font-size: 1.1rem; }
+      .patient-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        span { font-size: 0.8rem; color: #fffdfd; display: flex; align-items: center; gap: 5px; }
+        ion-icon { font-size: 14px; color: #888; }
+      }
+    }
+
+    .divider { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #aaa;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .reason-text { color: #fffcfc; font-size: 0.95rem; margin-bottom: 15px; }
+
+    .feedback-section {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 12px;
+      
+      .rating-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        .stars ion-icon { font-size: 18px; margin-right: 2px; }
+        .rating-num { font-weight: 700; color: #ffffff; }
+      }
+
+      .opinion-quote {
+        font-style: italic;
+        color: #ffffff;
+        font-size: 0.9rem;
+        display: flex;
+        gap: 5px;
+        ion-icon { font-size: 16px; min-width: 16px; }
+      }
+    }
+  }
 }
 
-ion-card-title,
-ion-card-subtitle,
-p {
-  font-size: 15px;
+.empty-history {
+  padding-top: 100px;
+  ion-icon { font-size: 5rem; color: #ccc; }
+  p { color: #888; margin-top: 10px; }
 }
 
-ion-icon {
-  color: #66ccff;
-  margin-right: 4px;
+@media (prefers-color-scheme: dark) {
+  .history-content {
+    --background: #121212;
+    .history-card {
+      background: #1e1e1e !important;
+      .date-title, .patient-name { color: white !important; }
+      .patient-grid span, .reason-text { color: #bbb; }
+      .feedback-section { background: #262626; .rating-num, .opinion-quote { color: #aaa; } }
+    }
+  }
 }
+.history-content {
+  --background: #f0f2f5;
 
-.fade-in {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-color-scheme: light) {
-  ion-card {
-    background-color: white;
-    color: black;
+  ion-grid {
+    padding: 0; 
   }
 
+  .history-card {
+    max-width: 100%; 
+    margin-inline: auto;
+    background: white !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
+  }
+
+  .btn-responsive {
+    max-width: 400px; 
+    margin-inline: auto;
+    font-weight: 700;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .history-content {
+    --background: #121212;
+    .history-card { background: #1e1e1e !important; }
+  }
+}
+.stars-container {
+  display: flex;
+  gap: 2px;
+  margin-right: 8px;
+
   ion-icon {
-    color: #1976d2;
+    font-size: 1.2rem;
+    color: #ccc; 
+
+    &.filled {
+      color: #ffc107; 
+    }
+  }
+}
+
+.rating-num {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .stars-container ion-icon {
+    color: #444;
+  }
+  .rating-num {
+    color: #aaa;
   }
 }

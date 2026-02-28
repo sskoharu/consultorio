@@ -1,59 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Registrar Cita</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="register-cita-content">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="6">
 
-<ion-content class="ion-padding" [fullscreen]="true">
+        <div class="step-container fade-in">
+          <div class="step-badge">1</div>
+          <ion-card class="modern-step-card">
+            <ion-card-header>
+              <ion-card-title class="dark-title">Información de la Consulta</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item lines="none" class="custom-input-box">
+                <ion-label position="stacked" class="dark-label">Motivo</ion-label>
+                <ion-input [(ngModel)]="motivo" placeholder="Ej. Limpieza o Dolor" class="dark-text-input"></ion-input>
+                <ion-icon name="chatbubble-outline" slot="end" color="primary"></ion-icon>
+              </ion-item>
 
-  <ion-card class="form-card fade-in">
-    <ion-card-content>
+              <ion-item lines="none" class="custom-input-box ion-margin-top">
+                <ion-label position="stacked" class="dark-label">Odontólogo de preferencia</ion-label>
+                <ion-select [(ngModel)]="odontologo" placeholder="Seleccione un profesional" class="dark-select">
+                  <ion-select-option [value]="1">Dr. Sebastián - General</ion-select-option>
+                  <ion-select-option [value]="2">Dra. Elena - Ortodoncia</ion-select-option>
+                </ion-select>
+                <ion-icon name="person-outline" slot="end" color="primary"></ion-icon>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </div>
 
-      <ion-item class="input-item">
-        <ion-icon name="chatbox-ellipses-outline" slot="start"></ion-icon>
-        <ion-input type="text" placeholder="Motivo" [(ngModel)]="motivo"></ion-input>
-      </ion-item>
+        <div class="step-container fade-in" style="animation-delay: 0.2s;">
+          <div class="step-badge">2</div>
+          <ion-card class="modern-step-card calendar-card">
+            <ion-card-header>
+              <ion-card-title>Fecha y Horario</ion-card-title>
+            </ion-card-header>
+            <ion-datetime presentation="date-time" [min]="fechaMinima" (ionChange)="validarFecha($event)"
+              hour-cycle="h23" minuteValues="0" hourValues="10,11,12,13,14,15,16,17,18" class="styled-datetime">
+            </ion-datetime>
+          </ion-card>
+        </div>
 
-      <ion-item class="input-item">
-        <ion-icon name="people-outline" slot="start"></ion-icon>
-        <ion-select [(ngModel)]="odontologo" placeholder="Seleccione odontólogo">
-          <ion-select-option [value]="1">Odontólogo Sebastián, Dentista</ion-select-option>
-          <ion-select-option [value]="2">Odontólogo 2</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <div class="footer-actions fade-in" style="animation-delay: 0.4s;">
+          <div class="selected-info" *ngIf="fechaHoraFormateada">
+            <p>Agendando para el: <strong>{{ fechaHoraFormateada }}</strong></p>
+          </div>
+          <p *ngIf="mensajeHorasDisponibles" class="disponibilidad-msg ion-text-center">
+            {{ mensajeHorasDisponibles }}
+          </p>
 
-      <ion-item class="input-item">
-        <ion-icon name="calendar-outline" slot="start"></ion-icon>
-        <ion-datetime name="fechaHora" presentation="date-time" placeholder="Selecciona fecha y hora"
-          [min]="fechaMinima" (ionChange)="validarFecha($event)" hour-cycle="h23" minuteValues="0"
-          hourValues="10,11,12,13,14,15,16,17,18">
-          <span slot="title">Seleccione un horario para su cita</span>
-          <span slot="time-label">Hora</span>
-        </ion-datetime>
-      </ion-item>
+          <ion-button expand="block" class="main-confirm-btn" (click)="guardarCita()">
+            RESERVAR AHORA
+          </ion-button>
 
-      <ion-item class="input-item">
-        <ion-icon name="time-outline" slot="start"></ion-icon>
-        <ion-input type="text" name="fechaHoraInput" placeholder="Fecha seleccionada" [value]="fechaHoraFormateada"
-          readonly></ion-input>
-      </ion-item>
+          <ion-button fill="clear" class="btn-cancelar-ultra" (click)="regresar()">
+            CANCELAR Y VOLVER
+          </ion-button>
+        </div>
 
-      <ion-label *ngIf="mensajeHorasDisponibles" class="ion-text-wrap ion-margin-bottom">
-        {{ mensajeHorasDisponibles }}
-      </ion-label>
-
-      <ion-button expand="block" color="primary" class="ion-margin-top" (click)="guardarCita()">
-        <ion-icon name="save-outline" slot="start"></ion-icon>
-        Guardar cita
-      </ion-button>
-
-
-      <ion-button expand="block" color="secondary" class="ion-margin-top" (click)="regresar()">
-        <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-        Regresar
-      </ion-button>
-
-    </ion-card-content>
-  </ion-card>
-
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

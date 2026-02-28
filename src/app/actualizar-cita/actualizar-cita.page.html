@@ -1,39 +1,60 @@
-<ion-item class="input-item">
-          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-          <ion-input type="text" placeholder="Motivo" [(ngModel)]="motivo"></ion-input>
-</ion-item>
-<ion-item class="input-item">
-  <ion-icon name="calendar-outline" slot="start"></ion-icon>
-  <ion-datetime
-  name="fechaHora"
-  presentation="date-time"
-  placeholder="Selecciona fecha y hora"
-  [min]="fechaMinima"
-  (ionChange)="validarFecha($event)"
-  hour-cycle="h23"
-  minuteValues="0" 
-  hourValues="10,11,12,13,14,15,16,17,18"
-><span slot="title">Seleccione un horario para su cita</span>
-<span slot="time-label">Hora</span></ion-datetime>
-</ion-item>
-<ion-item class="input-item">
-  <ion-input
-    type="text"
-    name="fechaHoraInput"
-    placeholder="Fecha seleccionada"
-    [value]="fechaHoraFormateada"
-    readonly
-  ></ion-input>
-</ion-item>
-<ion-label *ngIf="mensajeHorasDisponibles" class="ion-text-wrap ion-margin-bottom">
-  {{ mensajeHorasDisponibles }}
-</ion-label>
-<ion-button expand="block" color="primary" (click)="actualizarCita()" class="ion-margin-top">
-  Actualizar cita
-  
-</ion-button>
-<ion-button expand="block" color="primary" (click)="Cerrar()" class="ion-margin-top">
-  Cancelar
-  
-</ion-button>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Modificar mi Cita</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="Cerrar()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content class="ion-padding update-cita-content">
+  <div class="edit-header ion-text-center fade-in">
+    <ion-icon name="create-outline" class="edit-icon"></ion-icon>
+    <h2>Ajustar Horario</h2>
+    <p>Puedes cambiar el motivo o reprogramar la fecha.</p>
+  </div>
+
+  <ion-card class="form-card-update fade-in">
+    <ion-card-content>
+
+      <ion-item lines="none" class="input-modern-edit">
+        <ion-icon name="chatbubble-outline" slot="start"></ion-icon>
+        <ion-label position="stacked" class="dark-label">Motivo de la consulta</ion-label>
+        <ion-input type="text" placeholder="Ej: Revisión general" [(ngModel)]="motivo"></ion-input>
+      </ion-item>
+
+      <div class="datetime-wrapper">
+        <p class="section-subtitle"><ion-icon name="calendar-clear-outline"></ion-icon> Nueva Fecha y Hora</p>
+        <ion-datetime name="fechaHora" presentation="date-time" [min]="fechaMinima" (ionChange)="validarFecha($event)"
+          hour-cycle="h23" minuteValues="0" hourValues="10,11,12,13,14,15,16,17,18" class="custom-picker">
+          <span slot="title">Horarios disponibles</span>
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+      </div>
+
+      <ion-item lines="none" class="input-modern-edit selection-display" *ngIf="fechaHoraFormateada">
+        <ion-icon name="time-outline" slot="start" color="primary"></ion-icon>
+        <ion-label position="stacked">Fecha seleccionada</ion-label>
+        <ion-input [value]="fechaHoraFormateada" readonly></ion-input>
+      </ion-item>
+
+      <ion-label *ngIf="mensajeHorasDisponibles" class="ion-text-wrap ion-margin-bottom">
+        {{ mensajeHorasDisponibles }}
+      </ion-label>
+
+      <div class="ion-margin-top">
+        <ion-button expand="block" class="btn-main" (click)="actualizarCita()">
+          <ion-icon name="save-outline" slot="start"></ion-icon>
+          GUARDAR CAMBIOS
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" color="medium" (click)="Cerrar()">
+          Cancelar
+        </ion-button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

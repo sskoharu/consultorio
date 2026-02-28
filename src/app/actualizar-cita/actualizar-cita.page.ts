@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonItem, IonIcon, IonInput,
    IonLoading, IonLabel,
    AlertController,
-   IonSelectOption} from '@ionic/angular/standalone';
+   IonSelectOption, IonButtons } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 import { ModalController, ToastController } from '@ionic/angular/standalone';
 import { MenuPacientePage } from '../menu-paciente/menu-paciente.page';
@@ -17,7 +17,7 @@ import { NgIf } from '@angular/common';
   selector: 'app-actualizar-cita',
   templateUrl: './actualizar-cita.page.html',
   styleUrls: ['./actualizar-cita.page.scss'],
-  imports: [FormsModule,IonButton, IonDatetime,IonInput,IonLabel,NgIf,IonButton,IonIcon, IonItem],
+  imports: [IonButtons, FormsModule, IonButton, IonDatetime, IonInput, IonLabel, NgIf, IonButton, IonIcon, IonItem, IonCardContent, IonCard, IonContent, IonTitle, IonToolbar, IonHeader],
   standalone: true,
 })
 export class ActualizarCitaPage {

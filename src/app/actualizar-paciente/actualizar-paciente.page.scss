@@ -1,67 +1,76 @@
-ion-content {
-  --background: #121212; 
-  color: white;
+.edit-profile-content {
+  --background: #f4f7f9; 
+
+  .avatar-header {
+    margin: 20px 0;
+    .avatar-circle {
+      width: 80px;
+      height: 80px;
+      background: var(--ion-color-primary);
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ion-icon { font-size: 40px; color: white; }
+    }
+    h2 { font-weight: 800; color: #ffffff; margin: 0; }
+    p { color: #666; font-size: 0.9rem; }
+  }
 }
 
-ion-card {
-  background-color: #1f1f1f;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.form-card-edit {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
+  margin: 0;
+
+  .input-modern-edit {
+    --background: #f9f9f9;
+    --border-radius: 12px;
+    --padding-start: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    
+    ion-label {
+      color: var(--ion-color-primary) !important;
+      font-weight: 700 !important;
+      font-size: 0.8rem !important;
+    }
+
+    ion-input {
+      --color: #333;
+      font-weight: 500;
+    }
+
+    ion-icon {
+      margin-top: 15px;
+      color: #999;
+    }
+  }
 }
 
-ion-item {
-  --background: transparent;
-  color: #fff;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  --border-color: transparent;
-}
-
-ion-label {
-  color: #bbbbbb;
-  font-size: 14px;
-}
-
-ion-input::part(native) {
-  color: #ffffff;
-}
-
-ion-button {
+.button-group-edit {
   margin-top: 20px;
-  --border-radius: 12px;
-  font-weight: 600;
+  .btn-update {
+    --border-radius: 15px;
+    height: 55px;
+    font-weight: 700;
+    --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.3);
+  }
 }
 
-ion-icon {
-  color: #00bcd4;
-}
-
-ion-toolbar {
-  --background: #1976d2;
-  --color: #fff;
-}
-
-ion-title {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-@media (prefers-color-scheme: light) {
-  ion-content {
-    --background: #f2f2f2;
-    color: black;
+/* Modo Oscuro */
+@media (prefers-color-scheme: dark) {
+  .edit-profile-content { --background: #121212; }
+  .form-card-edit {
+    background: #1e1e1e !important;
+    .input-modern-edit {
+      --background: #2a2a2a;
+      border-color: #333;
+      ion-input { --color: white; }
+      ion-label { color: var(--ion-color-primary) !important; }
+    }
   }
-
-  ion-card {
-    background-color: #ffffff;
-  }
-
-  ion-label,
-  ion-input::part(native) {
-    color: #222;
-  }
-
-  ion-icon {
-    color: #1976d2;
-  }
+  .avatar-header h2 { color: white; }
 }

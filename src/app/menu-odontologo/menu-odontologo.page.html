@@ -1,48 +1,85 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Panel del Odontólogo</ion-title>
+    <ion-title>Agenda del Día</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="CerrarSesion()" color="light">
+        <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding doctor-panel-content">
+  <div class="header-welcome fade-in">
+    <h1>¡Hola, Doctor!</h1>
+    <p>Tienes {{ citas?.length }} cita(s) pendientes.</p>
+  </div>
 
-  <ion-card *ngFor="let cita of citas" class="ion-margin-bottom fade-in">
+  <ion-card *ngFor="let cita of citas" class="doctor-card fade-in">
+    <div class="card-priority-bar" [ngClass]="cita.Estado.toLowerCase()"></div>
+    
     <ion-card-header>
-      <ion-card-title>Cita #{{ cita.Id }}</ion-card-title>
-      <ion-card-subtitle>
-        <ion-icon name="calendar-outline" slot="start"></ion-icon>
-        {{ cita.Fecha | date: 'short' }}
+      <div class="header-row">
+        <ion-card-title>Cita #{{ cita.Id }}</ion-card-title>
+        <div class="time-badge">
+          <ion-icon name="time-outline"></ion-icon>
+          {{ cita.Fecha | date: 'shortTime' }}
+        </div>
+      </div>
+      <ion-card-subtitle class="date-subtitle">
+        {{ cita.Fecha | date: 'fullDate' }}
       </ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <p><strong>Motivo:</strong> {{ cita.Motivo }}</p>
-      <p><strong>Estado:</strong> {{ cita.Estado }}</p>
-      <p><strong>Paciente:</strong> {{ cita.PacienteNombre }} {{ cita.PacienteApellido }}</p>
-      <p><strong>Cédula:</strong> {{ cita.PacienteCedula }}</p>
-      <p><strong>Correo:</strong> {{ cita.PacienteEmail }}</p>
-      <p><strong>Teléfono:</strong> {{ cita.PacienteTelefono }}</p>
-      <p><strong>Edad:</strong> {{ cita.PacienteEdad }}</p>
+      <div class="patient-info-box">
+        <div class="patient-main">
+          <ion-avatar slot="start" class="mini-avatar">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <div>
+            <h2 class="patient-name">{{ cita.PacienteNombre }} {{ cita.PacienteApellido }}</h2>
+            <p class="patient-id">C.I: {{ cita.PacienteCedula }} • {{ cita.PacienteEdad }} años</p>
+          </div>
+        </div>
 
-      <ion-button expand="block" color="success" class="ion-margin-top" (click)="finalizarCita(cita)">
+        <div class="info-grid">
+          <div class="info-item full-width">
+            <ion-icon name="medical-outline" color="primary"></ion-icon>
+            <p><strong>Motivo:</strong> {{ cita.Motivo }}</p>
+          </div>
+          <div class="info-item">
+            <ion-icon name="mail-outline"></ion-icon>
+            <p>{{ cita.PacienteEmail }}</p>
+          </div>
+          <div class="info-item">
+            <ion-icon name="call-outline"></ion-icon>
+            <p>{{ cita.PacienteTelefono }}</p>
+          </div>
+        </div>
+      </div>
+
+      <ion-button expand="block" color="success" class="btn-finish" (click)="finalizarCita(cita)">
         <ion-icon name="checkmark-done-outline" slot="start"></ion-icon>
-        Finalizar Cita
+        FINALIZAR ATENCIÓN
       </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <ion-item *ngIf="citas && citas.length === 0">
-    <ion-label>No hay citas asignadas.</ion-label>
-  </ion-item>
+  <div class="empty-state ion-text-center" *ngIf="citas && citas.length === 0">
+    <ion-icon name="cafe-outline"></ion-icon>
+    <h3>No hay más citas</h3>
+    <p>Todo está al día por ahora.</p>
+  </div>
 
-  <ion-button expand="block" color="secondary" class="ion-margin-top" (click)="verHistorial()">
-    <ion-icon name="document-text-outline" slot="start"></ion-icon>
-    Ver Historial
-  </ion-button>
-
+  <div class="footer-buttons">
+    <ion-button expand="block" fill="outline" color="primary" (click)="verHistorial()">
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+      HISTORIAL COMPLETO
+    </ion-button>
+  </div>
   <ion-button expand="block" color="danger" class="ion-margin-top" (click)="CerrarSesion()">
     <ion-icon name="log-out-outline" slot="start"></ion-icon>
     Cerrar Sesión
   </ion-button>
-
 </ion-content>

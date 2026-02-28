@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCardHeader, IonCardTitle, 
   IonCardSubtitle, IonCard, IonText, IonItem, IonLabel, IonButton, NavController, AlertController, IonCardContent,
-  ToastController,IonIcon} from '@ionic/angular/standalone';
+  ToastController,IonIcon, IonCol, IonRow, IonGrid, IonButtons } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AccesoService } from '../servicio.service';
   templateUrl: './historial-cita-paciente.page.html',
   styleUrls: ['./historial-cita-paciente.page.scss'],
   standalone: true,
-  imports: [IonButton, IonLabel,IonTitle, IonItem,IonIcon,IonCardContent, IonCard,IonToolbar,IonHeader, IonCardSubtitle, IonCardTitle,IonContent, IonCardHeader, CommonModule, FormsModule]
+  imports: [IonButtons, IonGrid, IonRow, IonCol, IonButton, IonLabel,IonTitle, IonItem,IonIcon,IonCardContent, IonCard,IonToolbar,IonHeader, IonCardSubtitle, IonCardTitle,IonContent, IonCardHeader, CommonModule, FormsModule]
 })
 export class HistorialCitaPacientePage implements OnInit {
   citasPaciente: any[] = [];

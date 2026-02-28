@@ -1,43 +1,67 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Historial de Citas</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Historial de Pacientes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content scroll-y="true" class="ion-padding">
+<ion-content scroll-y="true" class="ion-padding history-content">
+  
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="10" size-lg="8" size-xl="6">
+        
+        <ion-card *ngFor="let cita of citas" class="history-card fade-in">
+          <ion-card-header>
+            <div class="header-status">
+              <ion-badge color="success" mode="ios">Atendida</ion-badge>
+              <span class="cita-id">Ref: #{{ cita.Id }}</span>
+            </div>
+            <ion-card-title class="date-title">
+              {{ cita.Fecha | date: 'dd/MM/yyyy' }} 
+              <small>{{ cita.Fecha | date: 'shortTime' }}</small>
+            </ion-card-title>
+          </ion-card-header>
 
-  <ion-card *ngFor="let cita of citas" class="ion-margin-bottom fade-in">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon name="calendar-outline" slot="start"></ion-icon>
-        Cita #{{ cita.Id }}
-      </ion-card-title>
-      <ion-card-subtitle>
-        <ion-icon name="time-outline" slot="start"></ion-icon>
-        {{ cita.Fecha | date: 'short' }}
-      </ion-card-subtitle>
-    </ion-card-header>
+          <ion-card-content>
+            <div class="patient-section">
+              <h2 class="patient-name">{{ cita.PacienteNombre }} {{ cita.PacienteApellido }}</h2>
+              <div class="patient-grid">
+                <span><ion-icon name="id-card-outline"></ion-icon> {{ cita.PacienteCedula }}</span>
+                <span><ion-icon name="fitness-outline"></ion-icon> {{ cita.PacienteEdad }} años</span>
+                <span><ion-icon name="call-outline"></ion-icon> {{ cita.PacienteTelefono }}</span>
+                <span><ion-icon name="mail-outline"></ion-icon> {{ cita.PacienteEmail }}</span>
+              </div>
+            </div>
+            
+            <hr class="divider">
+            
+            <div class="reason-section">
+              <p class="section-label">MOTIVO DE CONSULTA</p>
+              <p class="reason-text">{{ cita.Motivo }}</p>
+            </div>
 
-    <ion-card-content>
-      <p><strong>Motivo:</strong> {{ cita.Motivo }}</p>
-      <p><strong>Estado:</strong> {{ cita.Estado }}</p>
-      <p><strong>Paciente:</strong> {{ cita.PacienteNombre }} {{ cita.PacienteApellido }}</p>
-      <p><strong>Cédula:</strong> {{ cita.PacienteCedula }}</p>
-      <p><strong>Correo:</strong> {{ cita.PacienteEmail }}</p>
-      <p><strong>Teléfono:</strong> {{ cita.PacienteTelefono }}</p>
-      <p><strong>Edad:</strong> {{ cita.PacienteEdad }}</p>
-      <p><strong>Calificación:</strong> {{ cita.Calificacion }} / 5 ⭐</p>
-      <p><strong>Opinión:</strong> "{{ cita.Opinion }}"</p>
-    </ion-card-content>
-  </ion-card>
+            <div class="feedback-section">
+              <p class="section-label">VALORACIÓN</p>
+              <div class="rating-row">
+                 <span class="rating-num">{{ cita.Calificacion }}/5</span>
+              </div>
+              <p class="opinion-quote" *ngIf="cita.Opinion">"{{ cita.Opinion }}"</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
 
-  <ion-item *ngIf="citas && citas.length === 0">
-    <ion-label>No hay citas asignadas.</ion-label>
-  </ion-item>
 
-  <ion-button expand="block" color="secondary" (click)="regresar()" class="ion-margin-top">
-    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-    Regresar
-  </ion-button>
-
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="regresar()" color="secondary">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

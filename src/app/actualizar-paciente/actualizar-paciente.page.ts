@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonLabel,IonButton,  ModalController, IonItem, IonCard,IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonLabel,IonButton,  ModalController, IonItem, IonCard,IonIcon, IonCol, IonRow, IonCardContent, IonButtons, IonGrid } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AccesoService } from '../servicio.service';
   templateUrl: './actualizar-paciente.page.html',
   styleUrls: ['./actualizar-paciente.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonLabel, IonCard,IonIcon , IonToolbar, IonItem, CommonModule, FormsModule]
+  imports: [IonGrid, IonButtons, IonCardContent, IonRow, IonCol, IonButton, IonContent, IonHeader, IonTitle, IonLabel, IonCard,IonIcon , IonToolbar, IonItem, CommonModule, FormsModule]
 })
 export class ActualizarPacientePage implements OnInit {
 txt_cedula: string = ""

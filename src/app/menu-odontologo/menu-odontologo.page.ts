@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonAvatar,IonIcon,IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonItem, IonLabel, IonButton, AlertController, ToastController, NavController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonAvatar,IonIcon,IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonItem, IonLabel, IonButton, AlertController, ToastController, NavController, IonButtons } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 
 
@@ -11,7 +11,7 @@ import { AccesoService } from '../servicio.service';
   templateUrl: './menu-odontologo.page.html',
   styleUrls: ['./menu-odontologo.page.scss'],
   standalone: true,
-  imports: [IonButton, IonLabel, IonItem,IonTitle,IonAvatar, IonIcon, IonToolbar, IonCardContent, IonContent, IonHeader,IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, CommonModule, FormsModule]
+  imports: [IonButtons, IonButton, IonLabel, IonItem,IonTitle,IonAvatar, IonIcon, IonToolbar, IonCardContent, IonContent, IonHeader,IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, CommonModule, FormsModule]
 })
 export class MenuOdontologoPage implements OnInit {
   citas: any[] = []; 

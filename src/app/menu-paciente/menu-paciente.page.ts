@@ -37,140 +37,141 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
     IonList,
     IonButtons,
     IonAvatar
-]
+  ]
 })
 
 export class MenuPacientePage implements OnInit {
   odontologoDatos: any = null;
   citaPaciente: any = null;
-nombreUsuario: string = 'Paciente';
+  nombreUsuario: string = 'Paciente';
   fechaHoy: Date = new Date();
-  constructor(private navCtrl:NavController,
-    private servicio:AccesoService,
+  constructor(private navCtrl: NavController,
+    private servicio: AccesoService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private modalCtrl: ModalController
   ) { }
-async ngOnInit() {
-  const nombreGuardado = await this.servicio.getSession('pacienteNombre'); 
+  async ngOnInit() {
+    const nombreGuardado = await this.servicio.getSession('pacienteNombre');
     if (nombreGuardado) {
       this.nombreUsuario = nombreGuardado;
     }
-  const id = await this.servicio.getSession('pacienteId');
-  console.log('ID de paciente recuperado de sesión:', id);
+    const id = await this.servicio.getSession('pacienteId');
+    console.log('ID de paciente recuperado de sesión:', id);
 
-  const datos = {
-    accion: 'obtener_cita_paciente',
-    PacienteId: id
-  };
+    const datos = {
+      accion: 'obtener_cita_paciente',
+      PacienteId: id
+    };
 
-  this.servicio.postData(datos).subscribe((resp: any) => {
-    if (resp.estado) {
-      this.citaPaciente = resp.cita;
+    this.servicio.postData(datos).subscribe((resp: any) => {
+      if (resp.estado) {
+        this.citaPaciente = resp.cita;
 
-      this.cargarDatosOdontologo(this.citaPaciente.OdontologoId);
-    } else {
-      this.citaPaciente = null;
-      this.odontologoDatos = null;
-    }
-  });
-}
-cargarDatosOdontologo(odontologoId: number) {
-  const datosOdonto = {
-    accion: 'obtener_datos_odontologo',
-    Id: odontologoId
-  };
-
-  this.servicio.postData(datosOdonto).subscribe((resp: any) => {
-    if (resp.estado) {
-      this.odontologoDatos = resp.datos;
-    } else {
-      this.odontologoDatos = null;
-    }
-  });
-}
-RegistrarCita() {
-this.navCtrl.navigateForward('/registro-cita');
-}
-CerrarSesion() {
-  
-this.servicio.closeSession()
-   this.navCtrl.navigateRoot("/home"); }
-async modificarCita(cita: any) {
-  const modal = await this.modalCtrl.create({
-    component: ActualizarCitaPage,
-    componentProps: {
-      cita: this.citaPaciente
-    },
-    cssClass: 'modal-grande'
-  });
-  await modal.present();
-
-  const { data } = await modal.onDidDismiss();
-  if (data?.actualizado) {
-    this.ngOnInit();
-  }
-}
-async cancelarCita(cita: any) {
-  const alert = await this.alertCtrl.create({
-    header: 'Confirmar cancelación',
-    message: '¿Estás seguro de que deseas cancelar tu cita?',
-    buttons: [
-      {
-        text: 'No',
-        role: 'cancel',
-        cssClass: 'secondary'
-      },
-      {
-        text: 'Sí, cancelar',
-        handler: () => {
-          const datos = {
-            accion: 'cancelar_cita',
-            Id: cita.Id
-          };
-
-          this.servicio.postData(datos).subscribe((resp: any) => {
-  if (resp.estado) {
-    this.citaPaciente = null;
-    
-    this.mostrarToast('Cita cancelada con éxito');
-  } else {
-    this.mostrarToast('Error al cancelar la cita');
-  }
-});
-
-        }
+        this.cargarDatosOdontologo(this.citaPaciente.OdontologoId);
+      } else {
+        this.citaPaciente = null;
+        this.odontologoDatos = null;
       }
-    ]
-  });
+    });
+  }
+  cargarDatosOdontologo(odontologoId: number) {
+    const datosOdonto = {
+      accion: 'obtener_datos_odontologo',
+      Id: odontologoId
+    };
 
-  await alert.present();
-}
-async mostrarToast(mensaje: string) {
-  const toast = await this.toastCtrl.create({
-    message: mensaje,
-    duration: 2000,
-    position: 'bottom',
-    color: 'success'
-  });
+    this.servicio.postData(datosOdonto).subscribe((resp: any) => {
+      if (resp.estado) {
+        this.odontologoDatos = resp.datos;
+      } else {
+        this.odontologoDatos = null;
+      }
+    });
+  }
+  RegistrarCita() {
+    this.navCtrl.navigateForward('/registro-cita');
+  }
+  CerrarSesion() {
 
-  toast.present();
-}
-async actualizarPerfil() {
-  const id = await this.servicio.getSession('pacienteId');
-  const modal = await this.modalCtrl.create({
-    component: ActualizarPacientePage,
-    componentProps: {
-      cita: this.citaPaciente
-    },
-    cssClass: 'modal-grande'
-  })
-  await modal.present();
-  console.log('ID de paciente recuperado de sesión para actualizar perfil:', id);
-};
-async verHistorial() {
-  this.navCtrl.navigateForward('/historial-cita-paciente');
-}
+    this.servicio.closeSession()
+    this.navCtrl.navigateRoot("/home");
+  }
+  async modificarCita(cita: any) {
+    const modal = await this.modalCtrl.create({
+      component: ActualizarCitaPage,
+      componentProps: {
+        cita: this.citaPaciente
+      },
+      cssClass: 'modal-grande'
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data?.actualizado) {
+      this.ngOnInit();
+    }
+  }
+  async cancelarCita(cita: any) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmar cancelación',
+      message: '¿Estás seguro de que deseas cancelar tu cita?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary'
+        },
+        {
+          text: 'Sí, cancelar',
+          handler: () => {
+            const datos = {
+              accion: 'cancelar_cita',
+              Id: cita.Id
+            };
+
+            this.servicio.postData(datos).subscribe((resp: any) => {
+              if (resp.estado) {
+                this.citaPaciente = null;
+
+                this.mostrarToast('Cita cancelada con éxito');
+              } else {
+                this.mostrarToast('Error al cancelar la cita');
+              }
+            });
+
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  async mostrarToast(mensaje: string) {
+    const toast = await this.toastCtrl.create({
+      message: mensaje,
+      duration: 2000,
+      position: 'bottom',
+      color: 'success'
+    });
+
+    toast.present();
+  }
+  async actualizarPerfil() {
+    const id = await this.servicio.getSession('pacienteId');
+    const modal = await this.modalCtrl.create({
+      component: ActualizarPacientePage,
+      componentProps: {
+        cita: this.citaPaciente
+      },
+      cssClass: 'modal-grande'
+    })
+    await modal.present();
+    console.log('ID de paciente recuperado de sesión para actualizar perfil:', id);
+  };
+  async verHistorial() {
+    this.navCtrl.navigateForward('/historial-cita-paciente');
+  }
 
 
 }

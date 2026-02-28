@@ -1,102 +1,102 @@
-ion-content {
+.historial-content {
   --background: transparent;
   background: url('/assets/fondo-historial.jpg') no-repeat center center / cover;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
   position: relative;
-  animation: zoomBackground 40s ease-in-out infinite alternate;
 }
 
-ion-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 0;
-}
-
-.historial-card {
-  background-color: rgba(25, 25, 25, 0.95);
-  border-radius: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+.date-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  background: var(--ion-color-primary);
   color: white;
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 0.6s ease;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  
+  .day { font-size: 1.4rem; line-height: 1; }
+  .month { font-size: 0.7rem; text-transform: uppercase; }
 }
 
-ion-card-title,
-ion-card-subtitle {
-  color: #e0e0e0;
+.historial-card-modern {
+  flex: 1;
+  margin: 0 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 15px !important;
+  color: #333;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-left: 6px solid #ccc;
+
+  &.border-atendida, &.border-confirmada { border-left-color: var(--ion-color-success); }
+  &.border-cancelada { border-left-color: var(--ion-color-danger); }
+  &.border-pendiente { border-left-color: var(--ion-color-warning); }
 }
 
-ion-button {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  
+  h2 { font-weight: 800; color: #1a1a1a; margin: 0; font-size: 1.1rem; }
+  .doctor-sub { margin: 2px 0; color: #666; font-size: 0.9rem; }
 }
 
-ion-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #eee;
+  
+  &.atendida, &.confirmada { background: rgba(var(--ion-color-success-rgb), 0.1); color: var(--ion-color-success); }
+  &.cancelada { background: rgba(var(--ion-color-danger-rgb), 0.1); color: var(--ion-color-danger); }
+  &.pendiente { background: rgba(var(--ion-color-warning-rgb), 0.1); color: var(--ion-color-warning); }
 }
 
-ion-button:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+.divider { border: 0; border-top: 1px solid #eee; margin: 12px 0; }
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin: 6px 0;
+  color: #444;
+  
+  ion-icon { color: var(--ion-color-primary); font-size: 1.1rem; }
+  .star-icon { color: #fbc02d; }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.action-zone {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
-@keyframes zoomBackground {
-  0% {
-    background-size: 100%;
-  }
-  100% {
-    background-size: 110%;
-  }
+.btn-rate { --border-radius: 8px; font-weight: 600; }
+
+.btn-regresar-ultra {
+  --background: rgba(255, 255, 255, 0.9);
+  --color: #000;
+  --border-radius: 15px;
+  height: 55px;
+  font-weight: 700;
+  margin-top: 30px;
 }
 
-
-.estado-confirmada {
-  border-left: 6px solid #10dc60;
-  box-shadow: 0 0 12px rgba(16, 220, 96, 0.3);
-}
-.estado-cancelada {
-  border-left: 6px solid #eb445a;
-  box-shadow: 0 0 12px rgba(235, 68, 90, 0.3);
-}
-.estado-pendiente {
-  border-left: 6px solid #ffc409;
-  box-shadow: 0 0 12px rgba(255, 196, 9, 0.3);
-}
-.estado-desconocida {
-  border-left: 6px solid #999;
-  box-shadow: 0 0 12px rgba(150, 150, 150, 0.2);
-}
-
-
-@media (prefers-color-scheme: light) {
-  ion-content::before {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  .historial-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #000;
-  }
-
-  ion-card-title,
-  ion-card-subtitle {
-    color: #333;
-  }
+.empty-historial {
+  text-align: center;
+  color: white;
+  padding: 50px 20px;
+  ion-icon { font-size: 4rem; opacity: 0.5; }
 }

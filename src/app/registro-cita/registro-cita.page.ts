@@ -4,8 +4,7 @@ import {
   IonItem, IonIcon, IonInput, IonLabel,
   AlertController,
   IonSelect,
-  IonSelectOption, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent
-} from '@ionic/angular/standalone';
+  IonSelectOption, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCol, IonRow, IonGrid, IonButtons, IonCardTitle, IonCardHeader } from '@ionic/angular/standalone';
 import { AccesoService } from '../servicio.service';
 import { ToastController } from '@ionic/angular';
 import { IonDatetime } from '@ionic/angular/standalone';
@@ -19,7 +18,7 @@ import { NgIf } from '@angular/common';
   selector: 'app-registro-cita',
   templateUrl: './registro-cita.page.html',
   styleUrls: ['./registro-cita.page.scss'],
-  imports: [FormsModule, IonButton, IonDatetime, IonInput, IonLabel, IonCardContent, IonSelect, IonSelectOption, NgIf, IonButton, IonIcon, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonCard],
+  imports: [IonCardHeader, IonCardTitle, IonButtons, IonGrid, IonRow, IonCol, FormsModule, IonButton, IonDatetime, IonInput, IonLabel, IonCardContent, IonSelect, IonSelectOption, NgIf, IonButton, IonIcon, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonCard],
   standalone: true,
 })
 export class RegistroCitaPage {

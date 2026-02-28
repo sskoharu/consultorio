@@ -10,7 +10,7 @@ import { HttpHeaders,HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AccesoService {
-server: string="http://localhost/Ws_Consultorio/ws_consultorio.php"
+server: string="https://consultoriobackend-abd9bzgghwfhcbdy.mexicocentral-01.azurewebsites.net/ws_consultorio.php"
 
   constructor(
         public toastCtrl:ToastController,
@@ -21,13 +21,9 @@ postFormData(formData: FormData) {
   return this.http.post(this.server, formData);
 }
 
-  postData(body:any){
-    let head=new HttpHeaders({'Content-Type':'application/json; charset=utf-8'})
-    let options={
-      headers:head
-    }
-    return this.http.post(this.server,JSON.stringify(body), options)
-  }
+  postData(body: any) {
+  return this.http.post(this.server, body); 
+}
 
   async showToast(mensaje:string, tiempo:number){
     const toast= await this.toastCtrl.create({

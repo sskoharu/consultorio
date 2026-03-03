@@ -52,12 +52,18 @@ export class MenuPacientePage implements OnInit {
     private modalCtrl: ModalController
   ) { }
   async ngOnInit() {
+    const id = await this.servicio.getSession('pacienteId');
+    console.log('ID de paciente recuperado de sesión:', id);
+
+    
+    if (!id) {
+      this.mostrarAlertaSeguridad();
+      return; 
+    }
     const nombreGuardado = await this.servicio.getSession('pacienteNombre');
     if (nombreGuardado) {
       this.nombreUsuario = nombreGuardado;
     }
-    const id = await this.servicio.getSession('pacienteId');
-    console.log('ID de paciente recuperado de sesión:', id);
 
     const datos = {
       accion: 'obtener_cita_paciente',
@@ -74,6 +80,23 @@ export class MenuPacientePage implements OnInit {
         this.odontologoDatos = null;
       }
     });
+  }
+  async mostrarAlertaSeguridad() {
+    const alert = await this.alertCtrl.create({
+      header: 'Acceso Denegado',
+      subHeader: 'Sesión no válida',
+      message: 'No se encontró una sesión activa. Por favor, inicia sesión para continuar.',
+      buttons: [
+        {
+          text: 'Ir al Login',
+          handler: () => {
+            this.navCtrl.navigateRoot('/home');
+          }
+        }
+      ],
+      backdropDismiss: false 
+    });
+    await alert.present();
   }
   cargarDatosOdontologo(odontologoId: number) {
     const datosOdonto = {
